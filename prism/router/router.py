@@ -33,8 +33,8 @@ class Router:
 
     def dispatch(self, request):
         urls = self.get_map().bind_to_environ(request.environ)
-        rule, arguments = urls.match(return_rule=True)
-        return rule.view(request)
+        rule, args = urls.match(return_rule=True)
+        return rule.view(request, **args)
 
 router = Router()
 

@@ -1,8 +1,9 @@
 from prism import server, router
 
-def hello(request):
-  return 'hello world'
+def hello(request, name):
+  return 'Hello ' + name
 
-router.get('/hello', hello)
+router.get('/', lambda request: 'Welcome!')
+router.get('/hello/<name>', hello)
 
 server.run()
