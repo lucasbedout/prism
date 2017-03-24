@@ -59,7 +59,7 @@ You can pass route parameters using the `<>` syntax.
 router.get('/hello/<name>', lambda request, name: 'Hello ' + name) 
 ```
 
-You can of course use a function and multiple params (you can still use a lambda but it's not readable anymore.
+You can of course use a function and multiple params (you can still use a lambda but it's not readable anymore).
 
 ```python
 def handler(request, name, age):
@@ -68,6 +68,77 @@ def handler(request, name, age):
 router.get('/hello/<name>/age/<age>', handler) 
 ```
 
+## Requests
+
+Prism provides a nice wrapper around the request. As we said before, a Request instance is passed to every route handler as its first parameter.
+
+### Request input
+
+You can get all user input (url and body) in one method, no matter the content type etc..
+
+```python
+input = request.all() # {'param': value}
+```
+
+You can also get a specific key
+
+```python
+input = request.input('key', None) # Returns the value for 'key' or None
+```
+
+Following the same logic, you also have a file method to get the files sent as POST parameters.
+
+```python
+input = request.file('filename') # Returns the file or None
+```
+
+If you specifically want the URL params or the POST/PUT body, you can use the following properties 
+
+```python
+url_params = request._params
+
+body = request._data
+```
+
+### Request headers
+
+You can get all headers as a `dict` using the `headers` property.
+
+```python
+input = request.headers # {'Content-Type': 'text/html'}
+```
+
+Or get a specific one
+
+```python
+input = request.header('User-Agent') # 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) [...]'
+```
+
+### Request infos
+
+**Path**
+
+```python
+request.path # '/path/of/the/request'
+```
+
+**Method**
+
+```python
+request.method # 'GET'
+```
+
+**Host**
+
+```python
+request.host # 'localhost:5555'
+```
+
+**Host URL**
+
+```python
+request.host_url # 'http://localhost:5555'
+```
 
 
 

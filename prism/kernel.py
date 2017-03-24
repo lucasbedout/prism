@@ -1,5 +1,5 @@
-from prism import router
-from werkzeug.wrappers import Request, Response
+from prism import Request, router
+from werkzeug.wrappers import Response
 
 @Request.application
 def application(request):
