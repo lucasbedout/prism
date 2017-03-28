@@ -68,6 +68,25 @@ def handler(request, name, age):
 router.get('/hello/<name>/age/<age>', handler) 
 ```
 
+### Middlewares
+
+You can define middlewares for your routes using the `via` method. A middleware takes the request as its only argument.
+A middleware can return `False` to block the request, this can be useful for authentication and right checking. 
+
+```python
+def guest(request):
+  return request.is_guest()
+
+router.get('/some/guest/page', some_guest_view).via(guest)
+```
+
+You can also pass a list of methods to `via`
+
+```python
+router.get('/some/guest/page', some_guest_view).via(a, b, c)
+```
+
+
 ## Requests
 
 Prism provides a nice wrapper around the request. As we said before, a Request instance is passed to every route handler as its first parameter.

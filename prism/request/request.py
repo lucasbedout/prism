@@ -24,6 +24,9 @@ class Request(BaseRequest):
             return self._input[key]
         return default
 
+    def has(self, key):
+        return key in self._input
+
     def file(self, key):
         if key in self.files:
             return self.files[key]
