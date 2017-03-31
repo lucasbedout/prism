@@ -1,4 +1,4 @@
-from prism import server, router
+from prism import router
 
 def hello(request, name):
   return 'Hello ' + name
@@ -9,4 +9,3 @@ def auth(request):
 router.get('/', lambda request: 'Welcome!')
 router.get('/hello/<name>', hello).via(auth)
 
-server.run()

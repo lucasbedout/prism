@@ -71,7 +71,7 @@ router.get('/hello/<name>/age/<age>', handler)
 ### Middlewares
 
 You can define middlewares for your routes using the `via` method. A middleware takes the request as its only argument.
-A middleware can return `False` to block the request, this can be useful for authentication and right checking. 
+Your function can return `False` to block the request, this can be useful for authentication and right checking. 
 
 ```python
 def guest(request):
@@ -83,7 +83,7 @@ router.get('/some/guest/page', some_guest_view).via(guest)
 You can also pass a list of methods to `via`
 
 ```python
-router.get('/some/guest/page', some_guest_view).via(a, b, c)
+router.get('/some/guest/page', some_guest_view).via([a, b, c])
 ```
 
 
