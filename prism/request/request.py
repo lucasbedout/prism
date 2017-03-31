@@ -41,7 +41,7 @@ class Request(BaseRequest):
         return None
 
     def __str__(self):
-        return 'Prism Request'
+        return '<Request {} {}>'.format(self.method, self.path)
 
 
 

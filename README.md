@@ -15,6 +15,12 @@ router.get('/hello', hello)
 server.run()
 ```
 
+Or if you use the example boilerplate 
+
+```bash
+python3 -m prism.example.wizard run
+```
+
 ## Routing
 
 ### Basics
